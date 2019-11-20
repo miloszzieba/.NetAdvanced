@@ -28,7 +28,7 @@ namespace DotNetAdvanced.AnonymousFunctionsAndTypes
             };
             #endregion
 
-            //Only in scope of the body of Main method
+            //Only in scope of the body of method
             #region Local Functions
             int localFuntion(int x, int y)
             {
@@ -53,7 +53,7 @@ namespace DotNetAdvanced.AnonymousFunctionsAndTypes
             new
             {
                 Price = x.Price > 10 ? x.Price - 5 : x.Price
-            });
+            }).Select(x => x.Price).ToList();
             #endregion
 
             #region Expression
@@ -71,10 +71,13 @@ namespace DotNetAdvanced.AnonymousFunctionsAndTypes
 
             #region dynamic
             dynamic dyn = new { Price = 1 };
+            dyn.Price = 5;
             //Exception:
-            //a.ProductionYear = 2000;
+            //dyn.ProductionYear = 2000;
             dyn = 1;
             dyn = "string";
+            //Exception:
+            //dyn.Price = 5;
             #endregion
 
             #region ExpandoObject

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DotNetAdvanced.GenericType_Repository
 {
-    public class BaseRepository<T> where T : BaseEntity
+    public class BaseRepository<T> where T : BaseEntity, new()
     {
         protected readonly List<T> _inMemoryDatabaseCollection = new List<T>();
 
@@ -27,6 +27,14 @@ namespace DotNetAdvanced.GenericType_Repository
             }
 
             this._inMemoryDatabaseCollection.RemoveAll(x => x.Id == id);
+        }
+
+        public T GetT()
+        {
+            return new T()
+            {
+                Id = _inMemoryDatabaseCollection.Count + 1
+            };
         }
     }
 }

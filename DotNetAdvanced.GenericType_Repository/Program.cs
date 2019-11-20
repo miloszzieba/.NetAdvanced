@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DotNetAdvanced.GenericType_Repository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace DotNetAdvanced.GenericType_Repository
     {
         static void Main(string[] args)
         {
+            var baseRepository = new BaseRepository<Product>();
+            baseRepository.Add(new Product());
         }
     }
 }

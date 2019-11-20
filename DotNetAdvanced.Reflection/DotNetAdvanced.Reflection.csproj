@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EBBBE0A8-6213-4CBC-AF9E-9FE528BEB484}</ProjectGuid>
+    <ProjectGuid>{E5717663-5B3C-4DA3-B89A-BA2241AABC22}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DotNetAdvanced.ExtensionsMethods</RootNamespace>
-    <AssemblyName>DotNetAdvanced.ExtensionsMethods</AssemblyName>
+    <RootNamespace>DotNetAdvanced.Reflection</RootNamespace>
+    <AssemblyName>DotNetAdvanced.Reflection</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarExtensionsExcercises.cs" />
-    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\MyAttribute.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

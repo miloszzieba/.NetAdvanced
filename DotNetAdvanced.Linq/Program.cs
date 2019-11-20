@@ -1,5 +1,7 @@
 ﻿using DotNetAdvanced.Linq.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace DotNetAdvanced.Linq
@@ -21,7 +23,7 @@ namespace DotNetAdvanced.Linq
                 .ToList();
 
             var enumerable = cars
-                .Select(x => new { Price = x.Price * 100 });
+                .Select(x => x.Price);
 
             var car1 = cars.First(x => x.ProductionYear > 2011);
             var car2 = cars.FirstOrDefault(x => x.ProductionYear > 2011);
@@ -82,12 +84,12 @@ namespace DotNetAdvanced.Linq
             };
 
             var selectManyCars = clients
-                .Where(x => x.IsBussiness)
+                //.Where(x => x.IsBussiness)
                 .SelectMany(x => x.Cars.Select(y => new
                 {
                     Car = y,
                     IsBussiness = x.IsBussiness
-                }));
+                })).ToList();
 
 
             var joinCars = from car in cars
@@ -112,16 +114,15 @@ namespace DotNetAdvanced.Linq
                 car => car.ClientId,
                 (client, clientCars) => new { Client = client, Cars = clientCars.DefaultIfEmpty() });
 
-            var clientList = clients.GroupBy(x => x.IsBussiness)
-                .ToDictionary(x => x.Key, x => x.ToList())
-                .Where(x => x.Key == true);
+            var clientList = clients.GroupBy(x => new { IsBussiness = x.IsBussiness, CarsCount = x.Cars.Count })
+                .ToDictionary(x => x.Key, x => x.ToList());
+                //.Where(x => x.Key == true);
 
             var aggregate = cars.Aggregate(0, (sum, car) =>
             {
                 sum += car.ProductionYear;
                 return sum;
-            });
-
+            }, x => x*x );
         }
     }
 }

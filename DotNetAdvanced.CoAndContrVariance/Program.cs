@@ -24,9 +24,6 @@ namespace DotNetAdvanced.CoAndContrVariance
 
             IContrvariant<BaseEntity> baseEntityContrvariant2 = new Contrvariant<BaseEntity>();
             IContrvariant<Product> myEntityContrvariant2 = new Contrvariant<BaseEntity>();
-
-            IContrvariant<Product> myEntityContrvariant3 = new Contrvariant<BaseEntity>();
-
         }
     }
 }

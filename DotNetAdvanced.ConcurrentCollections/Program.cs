@@ -25,41 +25,42 @@ namespace DotNetAdvanced.ConcurrentCollections
             Console.WriteLine(list.Count);
             #endregion
 
-            //#region ConcurrentBag
-            //var bag = new ConcurrentBag<int>();
+            #region ConcurrentBag
+            var bag = new ConcurrentBag<int>();
 
-            //for (var i = 0; i < 500; i++)
-            //{
-            //    Task.Run(() => bag.Add(i));
-            //    Task.Run(() => bag.Add(i + 1));
-            //}
+            for (var i = 0; i < 6000; i++)
+            {
+                Task.Run(() => bag.Add(i));
+                Task.Run(() => bag.Add(i + 1));
+            }
 
-            //Thread.Sleep(1000);
-            //Console.WriteLine(bag.Count);
-            //#endregion
+            Thread.Sleep(1000);
+            Console.WriteLine(bag.Count);
+            #endregion
 
-            //#region ConcurrentDictionary
-            ////Still not thread-safe
-            //if (!bag.Any(x => x == 1))
-            //    bag.Add(1);
+            #region ConcurrentDictionary
+            //Still not thread-safe
+            if (!bag.Any(x => x == 1))
+                bag.Add(1);
 
-            ////Thread-safe and unique objects
-            //var dictionary = new ConcurrentDictionary<int, object>();
-            //dictionary.TryAdd(1, null);
-            //#endregion
+            //Thread-safe and unique objects
+            var dictionary = new ConcurrentDictionary<int, object>();
+            dictionary.TryAdd(1, null);
 
-            //#region BlockingCollection
-            ////Producer-consumer scenario
-            //var blockingCollection = new BlockingCollection<int>();
-            //blockingCollection.Add(1);
-            //blockingCollection.Add(2);
-            //blockingCollection.CompleteAdding();
+            #endregion
 
-            //if (blockingCollection.IsAddingCompleted)
-            //{
-            //    blockingCollection.TryTake(out var result2);
-            //}
-            //#endregion
+            #region BlockingCollection
+            //Producer-consumer scenario
+            var blockingCollection = new BlockingCollection<int>();
+            blockingCollection.Add(1);
+            blockingCollection.Add(2);
+            blockingCollection.CompleteAdding();
+
+            if (blockingCollection.IsAddingCompleted)
+            {
+                blockingCollection.TryTake(out var result2);
+            }
+            #endregion
         }
     }
 }

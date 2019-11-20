@@ -46,7 +46,7 @@
     <Compile Include="IContrvariant.cs" />
     <Compile Include="ICovariant.cs" />
     <Compile Include="Models\BaseEntity.cs" />
-    <Compile Include="Models\MyEntity.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
