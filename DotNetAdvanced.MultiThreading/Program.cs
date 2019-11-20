@@ -11,76 +11,81 @@ namespace DotNetAdvanced.MultiThreading
     {
         private static void Main(string[] args)
         {
-            #region Start Thread
-            var additionalThread = new AdditionalThread();
-            var thread = new Thread(additionalThread.DoWork);
-            Console.WriteLine("Additional thread starting");
-            thread.Start(1);
-            Console.WriteLine("Main thread waiting for additional thread");
-            thread.Join();
-            Console.WriteLine("Additional thread stopped execution");
-            #endregion
+            //#region Start Thread
+            //var additionalThread = new AdditionalThread();
+            //var thread = new Thread(additionalThread.DoWork);
+            //Console.WriteLine("Additional thread starting");
+            //thread.Start(1);
+            //Console.WriteLine("Main thread waiting for additional thread");
+            //thread.Join();
+            //Console.WriteLine("Additional thread stopped execution");
+            //#endregion
 
-            #region Return Value
-            var value = "TEST";
-            thread = new Thread(
-                (x) =>
-                {
-                    Thread.Sleep(100);
-                    value = "Return value";
-                });
-            thread.Start(value);
-            thread.Join();
-            Console.WriteLine(value);
-            #endregion
+            //#region Return Value
+            //var value = "TEST";
+            //var thread = new Thread(
+            //    (x) =>
+            //    {
+            //        Thread.Sleep(1000);
+            //        value = "Return value";
+            //    });
+            //thread.Start();
+            //thread.Join();
+            //Console.WriteLine(value);
+            //#endregion
 
-            #region Thread IsBackground
-            thread = new Thread(
-                () =>
-                {
-                    while (true) { }
-                });
-            thread.IsBackground = true;
-            thread.Start();
-            Console.WriteLine();
-            #endregion
+            //#region Thread IsBackground
+            //var thread = new Thread(
+            //    () =>
+            //    {
+            //        while (true) {
+            //            Console.WriteLine("aaa");
+            //            Thread.Sleep(200);
+            //        }
+            //    });
+            //thread.IsBackground = true;
+            //thread.Start();
+            //Console.ReadLine();
+            //#endregion
 
-            #region Sleeping
-            var sleepingThread = new SleepingThread();
-            thread = new Thread(sleepingThread.Sleep);
-            thread.Start();
-            Thread.Sleep(2000);
-            thread.Interrupt();
+            //#region Sleeping
+            //var sleepingThread = new SleepingThread();
+            //var thread = new Thread(sleepingThread.Sleep);
+            //thread.Start();
+            //Thread.Sleep(2000);
+            //thread.Interrupt();
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
-            thread = new Thread(sleepingThread.Sleep);
-            thread.Start();
-            Thread.Sleep(2000);
-            thread.Abort();
-            #endregion
+            //thread = new Thread(sleepingThread.Sleep);
+            //thread.Start();
+            //Thread.Sleep(2000);
+            //thread.Abort();
+            //#endregion
 
-            #region Thread priority
-            thread = new Thread(new AdditionalThread().DoWork);
-            thread.Priority = ThreadPriority.Highest;
-            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
-            thread.Start(1);
-            thread.Join();
-            #endregion
+            //#region Thread priority
+            //var thread = new Thread(new AdditionalThread().DoWork);
+            //thread.Priority = ThreadPriority.Highest;
+            //Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
+            //thread.Start(1);
+            //thread.Join();
+            //#endregion
 
-            #region CancellationToken
-            var cts = new CancellationTokenSource();
-            var cancellationTokenThread = new CancellationTokenThread(cts.Token);
+            //#region CancellationToken
+            //var cts = new CancellationTokenSource();
+            //var cancellationTokenThread = new CancellationTokenThread(cts.Token);
 
-            thread = new Thread(new ThreadStart(cancellationTokenThread.DoWork));
-            thread.Start();
+            //var thread = new Thread(new ThreadStart(cancellationTokenThread.DoWork));
+            //thread.Start();
 
-            Thread.Sleep(10000);
-            Console.WriteLine("Cancellation requested");
-            cts.Cancel();
-            thread.Join();
-            cts.Dispose();
-            #endregion
+            //Thread.Sleep(10000);
+            //Console.WriteLine("Cancellation requested");
+            //cts.Cancel();
+            //thread.Join();
+            //cts.Dispose();
+            //#endregion
+
+            Excercises.Excercise3();
         }
     }
 }

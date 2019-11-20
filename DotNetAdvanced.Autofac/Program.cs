@@ -21,7 +21,7 @@ namespace DotNetAdvanced.Autofac
 
             //When we are passing not registered arguments
             //Resolved, when IUserRepository is injected
-            builder.Register(c => new UserRepository("127.0.0.1")).As<IUserRepository>();
+            //builder.Register(c => new UserRepository("127.0.0.1")).As<IUserRepository>();
 
             //Same as above, but with injecting registered interface
             builder.Register(c => new UserService(c.Resolve<IUserRepository>()))

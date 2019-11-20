@@ -1,39 +1,33 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Threading;
 
 namespace DotNetAdvanced.MultiThreadingSynchronization
 {
     public class SignallingPrimeGenerator
     {
-        private readonly ConcurrentBag<int> bag;
-        private readonly CountdownEvent countDownEvent;
-        private readonly CancellationToken token;
+        private readonly ConcurrentStack<int> _stack;
+        private readonly CountdownEvent _countDownEvent;
+        private readonly CancellationToken _token;
 
-        public SignallingPrimeGenerator(ConcurrentBag<int> bag, CountdownEvent countDownEvent,
+        public SignallingPrimeGenerator(ConcurrentStack<int> stack, CountdownEvent countDownEvent,
             CancellationToken token)
         {
-            this.bag = bag;
-            this.countDownEvent = countDownEvent;
-            this.token = token;
+            this._stack = stack;
+            this._countDownEvent = countDownEvent;
+            this._token = token;
         }
 
-
-        //Wykorzystać poprzedni kod dotyczący liczb pierwszych.
-        //Dodać do niego mechanizm, który po wyprodukowaniu 1000 liczb pierwszych
-        //powiadomi główny wątek o tym
-
-        //W momencie, kiedy główny wątek otrzyma informację powinien
-        //wywołać cancellationTokenSource.Cancel, który zatrzyma produkcję liczb pierwszych
         public void GeneratePrimes(int start, int range)
         {
             var isPrime = true;
             var end = start + range;
             for (var i = start; i <= end; i++)
             {
-                if (token.IsCancellationRequested)
-                    break;
                 for (var j = 2; j < i; j++)
                 {
+                    if (_token.IsCancellationRequested)
+                        return;
                     if (i % j == 0)
                     {
                         isPrime = false;
@@ -42,11 +36,13 @@ namespace DotNetAdvanced.MultiThreadingSynchronization
                 }
                 if (isPrime)
                 {
-                    if (token.IsCancellationRequested)
-                        break;
+                    try
                     {
-                        countDownEvent.Signal();
-                        bag.Add(i);
+                        _countDownEvent.Signal();
+                        _stack.Push(i);
+                    } catch(InvalidOperationException ex)
+                    {
+                        return;
                     }
                 }
                 isPrime = true;

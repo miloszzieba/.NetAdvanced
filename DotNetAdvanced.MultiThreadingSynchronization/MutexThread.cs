@@ -6,7 +6,7 @@ namespace DotNetAdvanced.MultiThreadingSynchronization
     {
         public void UseResource()
         {
-            if (Program.Mut.WaitOne(1000))
+            if (Program.Mut.WaitOne(Timeout.Infinite))
             {
                 Thread.Sleep(500);
                 Program.Mut.ReleaseMutex();
