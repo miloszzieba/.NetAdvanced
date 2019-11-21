@@ -16,7 +16,7 @@ namespace DotNetAdvanced.Tasks
             //task = Task.Run(() => Thread.Sleep(1000));
             //task.Wait();
 
-            //task = Task.Factory.StartNew(() => Thread.Sleep(1000));
+            //var awaitableTask = Task.Factory.StartNew(() => Thread.Sleep(1000));
             //#endregion
 
             //#region Return Value
@@ -35,37 +35,45 @@ namespace DotNetAdvanced.Tasks
             //    tasks[i] = (Task.Run(() => 5));
             //}
             //Task.WaitAll(tasks);
-            //var resultTasks = Task.WhenAll(tasks).Result;
+            //var resultTasks = Task.WhenAll(tasks);
             //#endregion
 
             //#region ContinueWith
-            //intTask = Task.Run(() =>
+            //var intTask = Task.Run(() =>
             //{
             //    Thread.Sleep(1000);
             //    return 5;
             //});
 
-            //var continueTask = intTask.ContinueWith((x) => x.Result + 5);
-            //result = intTask.Result;
+            //var continueTask = intTask.ContinueWith((x) => {
+            //    Thread.Sleep(5000);
+            //    return x.Result + 5;
+            //    });
+            //var result = intTask.Result;
+            //Console.WriteLine(result);
             //var result2 = continueTask.Result;
+            //Console.WriteLine(result2);
+            //Console.ReadLine();
             //#endregion
 
             //#region Task Cancelling
             //var tokenSource = new CancellationTokenSource();
-            //CancellationToken ct = tokenSource.Token;
+            //var token = tokenSource.Token;
 
-            //task = Task.Factory.StartNew(() =>
+            //var task = Task.Run(() => 5, token);
+
+            //var task2 = Task.Factory.StartNew(() =>
             //{
-            //    ct.ThrowIfCancellationRequested();
+            //    token.ThrowIfCancellationRequested();
 
             //    bool moreToDo = true;
             //    while (moreToDo)
             //    {
             //        Thread.Sleep(500);
-            //        if (ct.IsCancellationRequested)
+            //        if (token.IsCancellationRequested)
             //        {
             //            //Clean your data
-            //            ct.ThrowIfCancellationRequested();
+            //            token.ThrowIfCancellationRequested();
             //        }
 
             //    }
@@ -74,7 +82,7 @@ namespace DotNetAdvanced.Tasks
             //tokenSource.Cancel();
             //try
             //{
-            //    task.Wait();
+            //    task2.Wait();
             //}
             //catch (AggregateException e)
             //{
@@ -84,6 +92,10 @@ namespace DotNetAdvanced.Tasks
             //    tokenSource.Dispose();
             //}
             //#endregion
+
+            Excercises.Excercise3();
+            Console.WriteLine("Program finished");
+            Console.ReadLine();
         }
     }
 }

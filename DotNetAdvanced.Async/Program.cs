@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -16,30 +17,45 @@ namespace DotNetAdvanced.Async
             {
                 var mainTask = Main();
                 Thread.Sleep(10000);
-                await mainTask;
-            });
+                return await mainTask;
+            }).ConfigureAwait(false);
 
             Thread.Sleep(5000);
-            
-            task.GetAwaiter().GetResult();
+
+            var number = task.GetAwaiter().GetResult();
         }
 
-        public static async Task Main()
+        public static async Task<int> Main()
         {
             var onetPageLengthTask = AccessTheWebAsync();
+            try
+            {
+                onetPageLengthTask.Wait();
+            }
+            catch (AggregateException ex)
+            {
 
-            int i = 1;
-            i++;
+            }
+            try
+            {
+                var onetPageLengthTask2 = await AccessTheWebAsync();
+            }
+            catch (ApplicationException ex)
+            {
 
-            var result = await onetPageLengthTask;
+            }
+
+            Thread.Sleep(4000);
+
+            return await onetPageLengthTask;
         }
 
         private static async Task<int> AccessTheWebAsync()
         {
             var client = new HttpClient();
 
-            Task<string> getOnetTask = client.GetStringAsync("http://onet.pl");
-            Task<string> getWPTask = client.GetStringAsync("http://wp.pl");
+            var getOnetTask = client.GetStringAsync("http://onet.pl");
+            var getWPTask = client.GetStringAsync("http://wp.pl");
 
             string urlContents = await getOnetTask;
             string content = await getWPTask;
