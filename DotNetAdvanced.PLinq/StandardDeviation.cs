@@ -18,7 +18,10 @@ namespace DotNetAdvanced.PLinq
 
             var mean = array.AsParallel().Average();
 
-            var standardDev = array.AsParallel().WithExecutionMode(ParallelExecutionMode.ForceParallelism).Aggregate(
+            var standardDev = array.AsParallel()
+                .WithDegreeOfParallelism(5)
+                .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+                .Aggregate(
                  0.0,
                  // do this on each thread
                  (subtotal, item) => subtotal + Math.Pow((item - mean), 2),

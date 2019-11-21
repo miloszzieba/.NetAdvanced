@@ -92,10 +92,6 @@ namespace DotNetAdvanced.Tasks
             //    tokenSource.Dispose();
             //}
             //#endregion
-
-            Excercises.Excercise3();
-            Console.WriteLine("Program finished");
-            Console.ReadLine();
         }
     }
 }

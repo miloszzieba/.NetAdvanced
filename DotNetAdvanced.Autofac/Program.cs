@@ -19,23 +19,19 @@ namespace DotNetAdvanced.Autofac
         {
             var builder = new ContainerBuilder();
 
-            //When we are passing not registered arguments
-            //Resolved, when IUserRepository is injected
-            //builder.Register(c => new UserRepository("127.0.0.1")).As<IUserRepository>();
-
             //Same as above, but with injecting registered interface
-            builder.Register(c => new UserService(c.Resolve<IUserRepository>()))
-                .As<IUserService>();
-
-            //Same as above, but registering specific instance - singleton
-            //builder.RegisterInstance(new UserRepository("127.0.0.1")).As<IUserRepository>();
-
+            //builder.Register(c => new UserService(c.Resolve<IUserRepository>()))
+            //    .As<IUserService>();
 
             // Scan an assembly for components
             var myAssembly = Assembly.GetEntryAssembly();
             builder.RegisterAssemblyTypes(myAssembly)
                    .Where(t => t.Namespace.StartsWith("DotNetAdvanced"))
                    .AsImplementedInterfaces();
+
+            //When we are passing not registered arguments
+            //Resolved, when IUserRepository is injected
+            builder.Register(c => new UserRepository("127.0.0.1")).As<IUserRepository>();
 
             //It has to be registered explicitly, 
             //because there's AsImplementedInterfaces above

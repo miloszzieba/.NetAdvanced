@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.PLinq", "Dot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.AsyncRepository", "DotNetAdvanced.AsyncRepository\DotNetAdvanced.AsyncRepository.csproj", "{5D35F231-CA81-4B50-BFB7-FC8EC01AAB4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.Autofac.Tests", "DotNetAdvanced.Autofac.Tests\DotNetAdvanced.Autofac.Tests.csproj", "{8FBAE068-7396-42D6-B5D9-571405A3B4A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.PLinq.Tests", "DotNetAdvanced.PLinq.Tests\DotNetAdvanced.PLinq.Tests.csproj", "{7558DD12-1F75-4F50-9664-A68A09E1D49D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,14 @@ Global
 		{5D35F231-CA81-4B50-BFB7-FC8EC01AAB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D35F231-CA81-4B50-BFB7-FC8EC01AAB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D35F231-CA81-4B50-BFB7-FC8EC01AAB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FBAE068-7396-42D6-B5D9-571405A3B4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FBAE068-7396-42D6-B5D9-571405A3B4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FBAE068-7396-42D6-B5D9-571405A3B4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FBAE068-7396-42D6-B5D9-571405A3B4A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

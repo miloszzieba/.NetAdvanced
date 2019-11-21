@@ -10,17 +10,19 @@ namespace DotNetAdvanced.PLinq
     {
         private static void Main(string[] args)
         {
-            var array = Enumerable.Range(0, 100_000).ToArray();
+            var array = Enumerable.Range(0, 50_00).ToArray();
 
             //#region AsParallel
             //var sw = new Stopwatch();
             //sw.Start();
-            //var sum = array.Select(x => {
+            //var sum = array.Select(x =>
+            //{
             //    Thread.Sleep(2);
             //    return x;
             //}).ToList();
             //sw.Stop();
             //Console.WriteLine(sw.ElapsedMilliseconds);
+
             //sw.Restart();
             //var sumParallel = array.AsParallel().AsOrdered().Select(x =>
             //{
@@ -28,7 +30,7 @@ namespace DotNetAdvanced.PLinq
             //    return x;
             //}).ToList();
             //sw.Stop();
-            //Console.WriteLine(sumParallel);
+            ////Console.WriteLine(sumParallel);
             //Console.WriteLine(sw.ElapsedMilliseconds);
             //Console.ReadLine();
             //#endregion
@@ -42,7 +44,7 @@ namespace DotNetAdvanced.PLinq
             //});
             //try
             //{
-            //    var result = array.AsParallel().WithCancellation(cts.Token)
+            //    var result = array.AsParallel().WithCancellation(cts.Token).WithDegreeOfParallelism(1)
             //        .Where(x => x % 3 == 0)
             //        .Select(x =>
             //        {
@@ -65,7 +67,7 @@ namespace DotNetAdvanced.PLinq
             //{
             //    var result = array.AsParallel().Select(x =>
             //    {
-            //        if (x % 100 == 0)
+            //        //if (x % 100 == 0)
             //            throw new ApplicationException("Happy exception");
             //        return x;
             //    }).ToList();

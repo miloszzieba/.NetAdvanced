@@ -9,6 +9,12 @@ namespace DotNetAdvanced.Autofac.DAL
     public class UserRepository : IUserRepository
     {
         private readonly List<User> database = new List<User>();
+        private string _v;
+
+        public UserRepository(string v)
+        {
+            this._v = v;
+        }
 
         public void AddUser(User user)
         {
