@@ -19,18 +19,19 @@ namespace DotNetAdvanced.PLinq
             var mean = array.AsParallel().Average();
 
             var standardDev = array.AsParallel()
-                .WithDegreeOfParallelism(5)
                 .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
                 .Aggregate(
-                 0.0,
+                 0d,
                  // do this on each thread
-                 (subtotal, item) => subtotal + Math.Pow((item - mean), 2),
+                 (subtotal, item) => {
+                     return subtotal + Math.Pow((item - mean), 2);
+                     },
                  //Unique for Parallel.Aggregate
                  // aggregate results after all threads are done.
                  (total, thisThread) => total + thisThread,
 
                 // perform standard deviation calc on the aggregated result.
-                (finalSum) => Math.Sqrt((finalSum / (array.Length - 1)))
+                (finalSum) => Math.Sqrt((finalSum / (array.Length)))
             );
 
             return standardDev;

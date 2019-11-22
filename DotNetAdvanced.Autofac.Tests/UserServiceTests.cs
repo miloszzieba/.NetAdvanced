@@ -25,7 +25,7 @@ namespace DotNetAdvanced.Autofac.Tests
             var userService = new UserService(testUserRepository);
 
             //Act
-            var action = () => userService.Login(login, password);
+            var action = new Action(() => userService.Login(login, password));
 
             //Assert
             Assert.Throws<ApplicationException>(action);
