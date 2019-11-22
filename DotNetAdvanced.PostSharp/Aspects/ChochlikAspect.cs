@@ -15,7 +15,8 @@ namespace DotNetAdvanced.PostSharp.Aspects
         {
             var random = new Random();
             var number = random.Next(0, 100);
-            args.ReturnValue = new ArgumentNullException();
+            if (number == 99)
+                args.ReturnValue = new ArgumentNullException();
         }
     }
 }

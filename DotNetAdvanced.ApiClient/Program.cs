@@ -16,8 +16,11 @@ namespace DotNetAdvanced.ApiClient
         static void Main(string[] args)
         {
             var httpClient = new HttpClient();
-            var service = new HttpService(httpClient, "http://localhost:81/api");
+            var service = new HttpService(httpClient, "http://localhost:51059/api");
             var response = service.Get<string[]>("values");
+            Console.WriteLine(response[0]);
+            Console.WriteLine(response[1]);
+            Console.ReadLine();
         }
     }
 }

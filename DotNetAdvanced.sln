@@ -41,8 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.Autofac.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.PLinq.Tests", "DotNetAdvanced.PLinq.Tests\DotNetAdvanced.PLinq.Tests.csproj", "{7558DD12-1F75-4F50-9664-A68A09E1D49D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.RabbitMQClient", "DotNetAdvanced.RabbitMQClient\DotNetAdvanced.RabbitMQClient.csproj", "{85CF7538-8B98-439C-898A-0D51C056D3BD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.RabbitMQConsumer", "DotNetAdvanced.RabbitMQConsumer\DotNetAdvanced.RabbitMQConsumer.csproj", "{813C6169-938F-4989-BC2E-EE8F97989A94}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.Api", "DotNetAdvanced.Api\DotNetAdvanced.Api.csproj", "{D4FE7C94-EA58-4875-8F52-58E66EB96996}"
@@ -50,6 +48,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.ApiClient", "DotNetAdvanced.ApiClient\DotNetAdvanced.ApiClient.csproj", "{68F939CB-BFE5-4BDA-AC85-43A9075D108B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.MultiThreadingBombs", "DotNetAdvanced.MultiThreadingBombs\DotNetAdvanced.MultiThreadingBombs.csproj", "{ECF44D3E-4A39-4C34-A4E7-0311C74231C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.PostSharp", "DotNetAdvanced.PostSharp\DotNetAdvanced.PostSharp.csproj", "{AF4CCF48-0DDE-4C0A-8E70-3BFBFD062940}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetAdvanced.RabbitMQProducer", "DotNetAdvanced.RabbitMQProducer\DotNetAdvanced.RabbitMQProducer.csproj", "{B164EF13-FB3B-4A6D-B5C1-7DB349736128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,10 +135,6 @@ Global
 		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7558DD12-1F75-4F50-9664-A68A09E1D49D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85CF7538-8B98-439C-898A-0D51C056D3BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85CF7538-8B98-439C-898A-0D51C056D3BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85CF7538-8B98-439C-898A-0D51C056D3BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85CF7538-8B98-439C-898A-0D51C056D3BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{813C6169-938F-4989-BC2E-EE8F97989A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{813C6169-938F-4989-BC2E-EE8F97989A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{813C6169-938F-4989-BC2E-EE8F97989A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -153,6 +151,14 @@ Global
 		{ECF44D3E-4A39-4C34-A4E7-0311C74231C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECF44D3E-4A39-4C34-A4E7-0311C74231C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECF44D3E-4A39-4C34-A4E7-0311C74231C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4CCF48-0DDE-4C0A-8E70-3BFBFD062940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4CCF48-0DDE-4C0A-8E70-3BFBFD062940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4CCF48-0DDE-4C0A-8E70-3BFBFD062940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4CCF48-0DDE-4C0A-8E70-3BFBFD062940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B164EF13-FB3B-4A6D-B5C1-7DB349736128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B164EF13-FB3B-4A6D-B5C1-7DB349736128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B164EF13-FB3B-4A6D-B5C1-7DB349736128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B164EF13-FB3B-4A6D-B5C1-7DB349736128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

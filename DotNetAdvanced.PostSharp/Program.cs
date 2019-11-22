@@ -1,5 +1,6 @@
 ﻿using DotNetAdvanced.PLinq;
 using DotNetAdvanced.PostSharp.Aspects;
+using System;
 using System.Reflection;
 using System.Threading;
 
@@ -14,8 +15,10 @@ namespace DotNetAdvanced.PostSharp
                 var x = TestMethod("TEST");
                 x++;
             }
+            Console.ReadLine();
         }
 
+        [LogMethodInfoAspect]
         private static int TestMethod(string testString)
         {
             return 5;

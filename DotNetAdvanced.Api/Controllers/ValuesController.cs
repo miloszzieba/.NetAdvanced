@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DotNetAdvanced.Api.Models;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace DotNetAdvanced.Api.Controllers
@@ -6,6 +7,10 @@ namespace DotNetAdvanced.Api.Controllers
     [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
+        /// <summary>
+        /// Method, that returns values
+        /// </summary>
+        /// <returns></returns>
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -27,7 +32,7 @@ namespace DotNetAdvanced.Api.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Product value)
         {
         }
 

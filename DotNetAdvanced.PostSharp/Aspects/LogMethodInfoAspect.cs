@@ -1,4 +1,5 @@
-﻿using PostSharp.Aspects;
+﻿using NLog;
+using PostSharp.Aspects;
 using PostSharp.Serialization;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,10 @@ namespace DotNetAdvanced.PostSharp.Aspects
     [PSerializable]
     public class LogMethodInfoAspect : OnMethodBoundaryAspect
     {
-
         public override void OnEntry(MethodExecutionArgs args)
         {
-            args.Exception = new Exception("TEST");
-            args.FlowBehavior = FlowBehavior.ThrowException;
-            Console.WriteLine("The {0} method has been entered.", args.Method.Name);
+            var logger = NLog.LogManager.GetCurrentClassLogger();
+            logger.Info($"The {args.Method.Name} method has been entered.");
         }
 
         public override void OnSuccess(MethodExecutionArgs args)
